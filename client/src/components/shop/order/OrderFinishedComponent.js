@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 const OrderFinishedComponent = () => {
