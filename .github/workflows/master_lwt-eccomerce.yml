@@ -36,7 +36,7 @@ jobs:
 
       - name: Copy client
         run: |
-          cp "client/build/*" "public"
+          cp -r client/build/. public
 
       - name: Zip artifact for deployment
         run: zip -r release.zip ./* -x client
