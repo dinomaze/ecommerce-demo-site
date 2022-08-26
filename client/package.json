@@ -19,7 +19,6 @@
     "start": "react-scripts start",
     "build": "npm run clean && npm run build:react && npm run copy-assets",
     "build:react": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "copy-assets": "node ./helperScripts/copyAssets.js",
     "clean": "node ./helperScripts/clean.js"
