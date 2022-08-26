@@ -57,6 +57,7 @@ export const pay = async (
         };
         getPaymentProcess(paymentData)
           .then(async (res) => {
+            console.log('transaction res', { res });
             if (res) {
               let orderData = {
                 allProduct: JSON.parse(localStorage.getItem("cart")),
@@ -75,7 +76,7 @@ export const pay = async (
                   dispatch({ type: "orderSuccess", payload: true });
                   setState({ clientToken: "", instance: {} });
                   dispatch({ type: "loading", payload: false });
-                  return history.push("/");
+                  return history.push("/checkout-finished");
                 } else if (resposeData.error) {
                   console.log(resposeData.error);
                 }

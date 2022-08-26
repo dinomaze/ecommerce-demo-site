@@ -1,4 +1,5 @@
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 const apiURL = process.env.REACT_APP_API_URL;
 
 export const getBrainTreeToken = async () => {
@@ -13,10 +14,17 @@ export const getBrainTreeToken = async () => {
   }
 };
 
+/** fake payment process */
 export const getPaymentProcess = async (paymentData) => {
   try {
-    let res = await axios.post(`${apiURL}/api/braintree/payment`, paymentData);
-    return res.data;
+    return new Promise(resolve => {
+      resolve({
+        transaction: {
+          amount: paymentData.amountTotal,
+          id: uuidv4()
+        }
+      })
+    })
   } catch (error) {
     console.log(error);
   }
