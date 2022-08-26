@@ -53,6 +53,10 @@ const CartModal = () => {
     }
   };
 
+  if (!data.cartModal) {
+    return null;
+  }
+
   return (
     <Fragment>
       {/* Black Overlay */}

@@ -24,6 +24,10 @@ const LoginSignup = (props) => {
     }
   };
 
+  if (!data.loginSignupModal) {
+    return null;
+  }
+
   return (
     <Fragment>
       {/* Black Overlay  */}
