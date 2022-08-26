@@ -23,6 +23,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 
 // Import Router
 const authRouter = require("./routes/auth");
@@ -56,7 +57,6 @@ mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(cors());
-app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -68,6 +68,9 @@ app.use("/api/product", productRouter);
 app.use("/api", brainTreeRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/customize", customizeRouter);
+
+app.use(express.static("public"));
+app.use('*', express.static(path.join(__dirname, 'public/index.html')));
 
 // Run Server
 const PORT = process.env.PORT || 8000;

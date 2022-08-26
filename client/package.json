@@ -17,9 +17,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run clean && npm run build:react && npm run copy-assets",
+    "build:react": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "copy-assets": "node ./helperScripts/copyAssets.js",
+    "clean": "node ./helperScripts/clean.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "shelljs": "^0.8.5"
   }
 }
