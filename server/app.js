@@ -40,18 +40,17 @@ const CreateAllFolder = require("./config/uploadFolderCreateScript");
 CreateAllFolder();
 
 // Database Connection
-mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .then(() =>
-    console.log(
-      "==============Mongodb Database Connected Successfully=============="
-    )
-  )
-  .catch((err) => console.log("Database Not Connected !!!"));
+mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
+   auth: {
+     username: process.env.COSMOSDB_USER,
+     password: process.env.COSMOSDB_PASSWORD
+   },
+ useNewUrlParser: true,
+ useUnifiedTopology: true,
+ retryWrites: false
+ })
+ .then(() => console.log('Connection to CosmosDB successful'))
+ .catch((err) => console.error(err));
 
 // Middleware
 app.use(morgan("dev"));
