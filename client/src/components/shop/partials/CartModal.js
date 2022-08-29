@@ -162,7 +162,7 @@ const CartModal = () => {
               )}
             </div>
           </div>
-          <div className="m-4 space-y-4">
+          <div className="m-4 space-y-4" style={{ marginBottom: '300px' }}>
             <div
               onClick={(e) => cartModalOpen()}
               className="cursor-pointer px-4 py-2 border border-gray-400 text-white text-center cursor-pointer"
