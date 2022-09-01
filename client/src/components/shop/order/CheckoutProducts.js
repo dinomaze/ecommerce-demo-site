@@ -16,8 +16,6 @@ export const CheckoutComponent = (props) => {
   const { data, dispatch } = useContext(LayoutContext);
 
   const [state, setState] = useState({
-    address: "",
-    phone: "",
     error: false,
     success: false,
     clientToken: null,
@@ -75,44 +73,6 @@ export const CheckoutComponent = (props) => {
                   ) : (
                     ""
                   )}
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="address" className="pb-2">
-                      Dalivery Address
-                    </label>
-                    <input
-                      value={state.address}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          address: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="text"
-                      id="address"
-                      className="border px-4 py-2"
-                      placeholder="Address..."
-                    />
-                  </div>
-                  <div className="flex flex-col py-2 mb-2">
-                    <label htmlFor="phone" className="pb-2">
-                      Phone
-                    </label>
-                    <input
-                      value={state.phone}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          phone: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="number"
-                      id="phone"
-                      className="border px-4 py-2"
-                      placeholder="+880"
-                    />
-                  </div>
                   <DropIn
                     options={{
                       authorization: state.clientToken,

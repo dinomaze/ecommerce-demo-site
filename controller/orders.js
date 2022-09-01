@@ -42,9 +42,7 @@ class Order {
       !allProduct ||
       !user ||
       !amount ||
-      !transactionId ||
-      !address ||
-      !phone
+      !transactionId
     ) {
       return res.json({ message: "All filled must be required" });
     } else {
@@ -54,8 +52,8 @@ class Order {
           user,
           amount,
           transactionId,
-          address,
-          phone,
+          address: address ?? 'Fake Address',
+          phone: phone ?? '+38511762254',
         });
         let save = await newOrder.save();
         if (save) {

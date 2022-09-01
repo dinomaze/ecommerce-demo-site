@@ -40,12 +40,7 @@ export const pay = async (
   history
 ) => {
   console.log(state);
-  if (!state.address) {
-    setState({ ...state, error: "Please provide your address" });
-  } else if (!state.phone) {
-    setState({ ...state, error: "Please provide your phone number" });
-  } else {
-    let nonce;
+  let nonce;
     state.instance
       .requestPaymentMethod()
       .then((data) => {
@@ -93,5 +88,4 @@ export const pay = async (
         console.log(error);
         setState({ ...state, error: error.message });
       });
-  }
 };
