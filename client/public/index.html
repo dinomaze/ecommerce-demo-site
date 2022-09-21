@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/style.css">
     <script src="https://lwt-snippet.surge.sh/maze-lwt.js"></script>
     <!-- Hotjar Tracking Code for https://lwt-eccomerce.azurewebsites.net/ -->
-    <script>
+    <!-- <script>
         (function (h, o, t, j, a, r) {
             h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
             h._hjSettings = { hjid: 3155553, hjsv: 6 };
@@ -19,6 +19,25 @@
             r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script> -->
+    <script>
+        (function mazeUniversalLoader(m, a, z, e, j, t) {
+            try {
+                j = m.sessionStorage.getItem('maze-us');
+            } catch (err) { }
+
+            if (!j) {
+                j = new Date().getTime();
+                try {
+                    m.sessionStorage.setItem('maze-us', j);
+                } catch (err) { }
+            }
+
+            t = a.createElement('script');
+            t.src = `${z}?t=${j}&apiKey=${e}`;
+            a.getElementsByTagName('head')[0].appendChild(t);
+            m.mazeUniversalSnippetApiKey = e
+        })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', 'b9aa94a0-5b8d-4267-b868-d9e4c330b50a', '', null);
     </script>
 </head>
 
