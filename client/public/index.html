@@ -20,23 +20,24 @@
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script> -->
     <script>
-        (function mazeUniversalLoader(m, a, z, e, j, t) {
+        (function (m, a, z, e) {
+            var s, t;
             try {
-                j = m.sessionStorage.getItem('maze-us');
+                t = m.sessionStorage.getItem('maze-us');
             } catch (err) { }
 
-            if (!j) {
-                j = new Date().getTime();
+            if (!t) {
+                t = new Date().getTime();
                 try {
-                    m.sessionStorage.setItem('maze-us', j);
+                    m.sessionStorage.setItem('maze-us', t);
                 } catch (err) { }
             }
 
-            t = a.createElement('script');
-            t.src = `${z}?t=${j}&apiKey=${e}`;
-            a.getElementsByTagName('head')[0].appendChild(t);
+            s = a.createElement('script');
+            s.src = z + '?t=' + t + '&apiKey=' + e;
+            a.getElementsByTagName('head')[0].appendChild(s);
             m.mazeUniversalSnippetApiKey = e
-        })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', 'b9aa94a0-5b8d-4267-b868-d9e4c330b50a', '', null);
+        })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '86e2c8a6-b4f6-45b5-9230-59cdae861f0f');
     </script>
 </head>
 
