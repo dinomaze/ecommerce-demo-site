@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: '16.x'
 
+      - name: Copy staging index.html over current one
+        run: |
+          cp -r client/build/index-staging.html client/build/index.html
+
       - name: npm install, build, and test server
         run: |
           npm install
@@ -37,10 +41,6 @@ jobs:
       - name: Copy client
         run: |
           cp -r client/build/. public
-      
-      - name: Copy staging index.html
-        run: |
-          cp -r client/build/index-staging.html public/index.html
 
       - name: Zip artifact for deployment
         run: zip -r release.zip ./* -x client
