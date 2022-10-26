@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Hayroo | A ecommerce website" />
+    <title>Hayroo</title>
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/style.css">
+    <!-- Hotjar Tracking Code for https://lwt-eccomerce.azurewebsites.net/ -->
+    <!-- <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 3155553, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script> -->
+    <script>
+        (function (m, a, z, e) {
+            var s, t;
+            try {
+                t = m.sessionStorage.getItem('maze-us');
+            } catch (err) { }
+
+            if (!t) {
+                t = new Date().getTime();
+                try {
+                    m.sessionStorage.setItem('maze-us', t);
+                } catch (err) { }
+            }
+
+            s = a.createElement('script');
+            s.src = z + '?t=' + t + '&apiKey=' + e;
+            a.getElementsByTagName('head')[0].appendChild(s);
+            m.mazeUniversalSnippetApiKey = e
+        })(window, document, 'https://snippet.testingmazeco.cloud/maze-universal-loader.js', '86e2c8a6-b4f6-45b5-9230-59cdae861f0f');
+    </script>
+</head>
+
+<body id="page-top">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="font-light text-base text-gray-800 bg-white flex flex-col min-h-screen" id="root"></div>
+</body>
+
+</html>
