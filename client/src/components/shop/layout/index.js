@@ -8,14 +8,6 @@ export const LayoutContext = createContext();
 const Layout = ({ children }) => {
   // auto login
   useEffect(() => {
-    if (!!localStorage.getItem("jwt") || !!sessionStorage.getItem('auto_login')) {
-      sessionStorage.setItem('auto_login', "true");
-      console.log('already logged in');
-      return;
-    }
-
-    console.log('start auto login');
-
     const autoLogin = async () => {
       try {
         let responseData = await loginReq({
@@ -34,6 +26,19 @@ const Layout = ({ children }) => {
       }
     }
 
+    if (localStorage.getItem('disable_auto_login')) {
+      console.log('auto login is disabled');
+      window.login = autoLogin;
+      return;
+    }
+
+    if (!!localStorage.getItem("jwt") || !!sessionStorage.getItem('auto_login')) {
+      sessionStorage.setItem('auto_login', "true");
+      console.log('already logged in');
+      return;
+    }
+
+    console.log('start auto login');
     autoLogin();
   }, []);
 

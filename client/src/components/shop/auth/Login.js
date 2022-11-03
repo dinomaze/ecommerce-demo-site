@@ -1,8 +1,11 @@
 import React, { Fragment, useState, useContext } from "react";
 import { loginReq } from "./fetchApi";
 import { LayoutContext } from "../index";
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
+  const { redirectTo } = props;
+  const history = useHistory();
   const { data: layoutData, dispatch: layoutDispatch } = useContext(
     LayoutContext
   );
@@ -33,6 +36,12 @@ const Login = (props) => {
       } else if (responseData.token) {
         setData({ email: "", password: "", loading: false, error: false });
         localStorage.setItem("jwt", JSON.stringify(responseData));
+        if (redirectTo) {
+          console.log('redirecting to', redirectTo);
+          history.push(redirectTo);
+          return;
+        }
+
         window.location.href = "/";
       }
     } catch (error) {

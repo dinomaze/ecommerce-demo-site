@@ -13,6 +13,7 @@ import {
 } from "./shop";
 import { DashboardAdmin, Categories, Products, Orders } from "./admin";
 import { UserProfile, UserOrders, SettingUser } from "./shop/dashboardUser";
+import LoginPage from '../components/login';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -41,6 +42,12 @@ const Routes = (props) => {
           component={OrderFinishedPage}
         />
         {/* Shop & Public Routes End */}
+
+        <Route
+          exact
+          path="/login"
+          component={LoginPage}
+        />
 
         {/* Admin Routes */}
         <AdminProtectedRoute
