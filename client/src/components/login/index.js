@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { isAuthenticate } from "../shop/auth/fetchApi";
 import Login from '../shop/auth/Login';
 import { Redirect, useLocation } from "react-router-dom";
@@ -6,9 +6,6 @@ import Layout from "../shop/layout";
 
 const LoginPage = () => {
     const location = useLocation();
-    useEffect(() => {
-        console.log('hello from the login page', location.state);
-    }, []);
 
     const renderLoginPage = () => {
         if (isAuthenticate()) {
