@@ -1,14 +1,3 @@
-# Project Demo
-[![Alt text](https://img.youtube.com/vi/lXk14qt2D28/0.jpg)](https://www.youtube.com/watch?v=lXk14qt2D28)
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Prerequisites
-
-NPM / Yarn and Node.js installed
-
 ### Installing
 
 Installing NPM modules on both client and server folders
@@ -16,24 +5,23 @@ Installing NPM modules on both client and server folders
 Execute these commands from the project directory
 
 ```
-cd client && npm install
+cd client
+npm install
+npm run build:local
 ```
 
 ```
-cd server && npm install
+npm install
 ```
+
+### Set the env variables
+
+Create a .env file in the root directory
+
+Copy the example file into it and set all the necessary values
 
 ### Running the app
-
-Open a terminal on server directory
 
 ```
 npm run start:dev
 ```
-
-and open another terminal on client directory
-```
-npm run start
-```
-
-Access the web app at http://localhost:3000/
