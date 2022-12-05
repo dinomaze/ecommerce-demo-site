@@ -23,7 +23,7 @@ jobs:
 
       - name: Copy testing index.html over current one
         run: |
-          cp -r client/public/index-testing.html client/public/index.html
+          cp -r client/setupData/htmlFiles/index-testing.html client/public/index.html
 
       - name: npm install, build, and test server
         run: |

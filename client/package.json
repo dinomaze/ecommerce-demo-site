@@ -18,11 +18,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "npm run build:react",
-    "build:local": "npm run clean && npm run build:react && npm run copy-assets",
+    "build:local": "npm run clean && npm run use-testing-html && npm run build:react && npm run copy-assets:local && npm run use-testing-html:revert",
     "build:react": "react-scripts build",
     "eject": "react-scripts eject",
     "copy-assets": "node ./helperScripts/copyAssets.js",
-    "copy-assets:staging": "node ./helperScripts/copyAssets-staging.js",
+    "copy-assets:local": "node ./helperScripts/copyAssets-local.js",
+    "use-testing-html": "node ./helperScripts/useTestingHtml.js",
+    "use-testing-html:revert": "node ./helperScripts/revertTestingHtml.js",
     "clean": "node ./helperScripts/clean.js"
   },
   "eslintConfig": {
