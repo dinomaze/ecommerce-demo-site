@@ -1,4 +1,5 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState, useMemo } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import AllReviews from "./AllReviews";
 import ReviewForm from "./ReviewForm";
 
@@ -9,25 +10,41 @@ import { isAuthenticate } from "../auth/fetchApi";
 
 import "./style.css";
 
+function useQuery() {
+  const { search } = useLocation();
+  const searchParams = useMemo(() => new URLSearchParams(search), [search]);
+
+  return searchParams.get('tab') ?? 'description';
+}
+
 const Menu = () => {
+  const location = useLocation();
+  const history = useHistory();
   const { data, dispatch } = useContext(ProductDetailsContext);
   const { data: layoutData } = useContext(LayoutContext);
+  const selectedTab = useQuery();
 
   return (
     <Fragment>
       <div className="flex flex-col md:flex-row items-center justify-center">
         <div
-          onClick={(e) => dispatch({ type: "menu", payload: true })}
+          onClick={(e) => {
+            history.push({...location, search: '?tab=description'});
+            dispatch({ type: "menu", payload: true });
+          }}
           className={`${
-            data.menu ? "border-b-2 border-yellow-700" : ""
+            selectedTab === 'description' ? "border-b-2 border-yellow-700" : ""
           } px-4 py-3 cursor-pointer`}
         >
           Description
         </div>
         <div
-          onClick={(e) => dispatch({ type: "menu", payload: false })}
+          onClick={(e) => {
+            history.push({...location, search: '?tab=reviews'});
+            dispatch({ type: "menu", payload: false });
+          }}
           className={`${
-            !data.menu ? "border-b-2 border-yellow-700" : ""
+            selectedTab === 'reviews' ? "border-b-2 border-yellow-700" : ""
           } px-4 py-3 relative flex cursor-pointer`}
         >
           <span>Reviews</span>

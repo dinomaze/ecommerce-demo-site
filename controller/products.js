@@ -227,11 +227,11 @@ class Product {
         let products = await productModel
           .find({ pPrice: { $lt: price } })
           .populate("pCategory", "cName")
-          .sort({ pPrice: -1 });
         if (products) {
           return res.json({ Products: products });
         }
       } catch (err) {
+        console.error(err);
         return res.json({ error: "Filter product wrong" });
       }
     }

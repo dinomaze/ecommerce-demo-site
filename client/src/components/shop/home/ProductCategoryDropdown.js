@@ -1,5 +1,5 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { Fragment, useContext, useState, useEffect, useMemo } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import { HomeContext } from "./index";
 import { getAllCategory } from "../../admin/categories/FetchApi";
 import { getAllProduct, productByPrice } from "../../admin/products/FetchApi";
@@ -58,11 +58,55 @@ const CategoryList = () => {
   );
 };
 
+function useQuery() {
+  const location = useLocation();
+  const { search } = location;
+  const history = useHistory();
+  const searchParams = useMemo(() => new URLSearchParams(search), [search]);
+
+  const setSearchParams = (params) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === null) {
+        newSearchParams.delete(key);
+      } else {
+        newSearchParams.set(key, value);
+      }
+    });
+
+    history.push({ ...location, search: newSearchParams.toString() });
+  };
+
+  const clearSearchParams = () => {
+    history.push({ ...location, search: "" });
+  };
+
+  return {
+    searchParams,
+    setSearchParams,
+    clearSearchParams
+  };
+}
+
 const FilterList = () => {
   const { data, dispatch } = useContext(HomeContext);
   const [range, setRange] = useState(0);
+  const { searchParams, setSearchParams, clearSearchParams } = useQuery();
+
+  useEffect(() => {
+    const price = searchParams.get("price");
+    console.log('FilterList mount', price, searchParams);
+    if (price) {
+      dispatch({ type: "filterListDropdown", payload: true });
+      setRange(+price);
+      fetchData(+price);
+    }
+  }, []);
 
   const rangeHandle = (e) => {
+    console.log('rangeHandle', e.target.value, searchParams);
+    setSearchParams({ ...searchParams, price: e.target.value });
     setRange(e.target.value);
     fetchData(e.target.value);
   };
@@ -95,6 +139,8 @@ const FilterList = () => {
   };
 
   const closeFilterBar = () => {
+    console.log('closeFilterBar');
+    clearSearchParams();
     fetchData("all");
     dispatch({ type: "filterListDropdown", payload: !data.filterListDropdown });
     setRange(0);
@@ -148,8 +194,11 @@ const Search = () => {
   const { data, dispatch } = useContext(HomeContext);
   const [search, setSearch] = useState("");
   const [productArray, setPa] = useState(null);
+  const { searchParams, setSearchParams, clearSearchParams } = useQuery();
 
   const searchHandle = (e) => {
+    console.log('searchHandle', e.target.value, searchParams, productArray);
+    setSearchParams({ ...searchParams, search: encodeURI(e.target.value) });
     setSearch(e.target.value);
     fetchData();
     dispatch({
@@ -159,7 +208,7 @@ const Search = () => {
     });
   };
 
-  const fetchData = async () => {
+  const fetchData = async (initialSearch) => {
     dispatch({ type: "loading", payload: true });
     try {
       setTimeout(async () => {
@@ -175,6 +224,8 @@ const Search = () => {
   };
 
   const closeSearchBar = () => {
+    console.log('closeSearchBar');
+    clearSearchParams();
     dispatch({ type: "searchDropdown", payload: !data.searchDropdown });
     fetchData();
     dispatch({ type: "setProducts", payload: productArray });
