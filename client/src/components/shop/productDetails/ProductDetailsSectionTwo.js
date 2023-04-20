@@ -20,7 +20,7 @@ function useQuery() {
 const Menu = () => {
   const location = useLocation();
   const history = useHistory();
-  const { data, dispatch } = useContext(ProductDetailsContext);
+  const { dispatch } = useContext(ProductDetailsContext);
   const { data: layoutData } = useContext(LayoutContext);
   const selectedTab = useQuery();
 

@@ -102,6 +102,7 @@ const FilterList = () => {
       setRange(+price);
       fetchData(+price);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const rangeHandle = (e) => {
