@@ -1,38 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Hayroo | A ecommerce website" />
     <title>Hayroo</title>
-    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/style.css">
-    <script>
-        (function (m, a, z, e) {
-            var s, t;
-            try {
-                t = m.sessionStorage.getItem('maze-us');
-            } catch (err) { }
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/style.css" />
+    <script src="http://localhost:9000/maze-lwt.js"></script>
+  </head>
 
-            if (!t) {
-                t = new Date().getTime();
-                try {
-                    m.sessionStorage.setItem('maze-us', t);
-                } catch (err) { }
-            }
-
-            s = a.createElement('script');
-            s.src = z + '?t=' + t + '&apiKey=' + e;
-            a.getElementsByTagName('head')[0].appendChild(s);
-            m.mazeUniversalSnippetApiKey = e
-        })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '86e2c8a6-b4f6-45b5-9230-59cdae861f0f');
-    </script>
-</head>
-
-<body id="page-top">
+  <body id="page-top">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="font-light text-base text-gray-800 bg-white flex flex-col min-h-screen" id="root"></div>
-</body>
-
+    <div
+      class="font-light text-base text-gray-800 bg-white flex flex-col min-h-screen"
+      id="root"
+    ></div>
+  </body>
 </html>
