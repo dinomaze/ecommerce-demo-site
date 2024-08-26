@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useContext } from "react";
 import moment from "moment";
 import { fetchOrderByUser } from "./Action";
 import Layout, { DashboardUserContext } from "./Layout";
+import { Head } from "../../../head";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -159,6 +160,7 @@ const OrdersComponent = () => {
 const UserOrders = (props) => {
   return (
     <Fragment>
+      <Head pageTitle="My Orders" />
       <Layout children={<OrdersComponent />} />
     </Fragment>
   );

@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { ProductDetailsContext } from "./index";
 import { LayoutContext } from "../layout";
 import Submenu from "./Submenu";
@@ -11,6 +12,7 @@ import { cartListProduct } from "../partials/FetchApi";
 import { isWishReq, unWishReq, isWish } from "../home/Mixins";
 import { updateQuantity, slideImage, addToCart, cartList } from "./Mixins";
 import { totalCost } from "../partials/Mixins";
+import { Head } from "../../../head";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -96,6 +98,8 @@ const ProductDetailsSection = (props) => {
   }
   return (
     <Fragment>
+      <Head pageTitle={sProduct.pName} />
+
       <Submenu
         value={{
           categoryId: sProduct.pCategory._id,

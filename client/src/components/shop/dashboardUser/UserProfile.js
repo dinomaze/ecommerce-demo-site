@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useState, useEffect } from "react";
 import Layout from "./Layout";
 import { DashboardUserContext } from "./Layout";
 import { updatePersonalInformationAction } from "./Action";
+import { Head } from "../../../head";
 
 const ProfileComponent = () => {
   const { data, dispatch } = useContext(DashboardUserContext);
@@ -117,6 +118,7 @@ const ProfileComponent = () => {
 const UserProfile = (props) => {
   return (
     <Fragment>
+      <Head pageTitle="My Account" />
       <Layout children={<ProfileComponent />} />
     </Fragment>
   );

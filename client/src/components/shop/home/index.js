@@ -4,12 +4,14 @@ import Slider from "./Slider";
 import ProductCategory from "./ProductCategory";
 import { homeState, homeReducer } from "./HomeContext";
 import SingleProduct from "./SingleProduct";
+import { Head } from "../../../head";
 
 export const HomeContext = createContext();
 
 const HomeComponent = () => {
   return (
     <Fragment>
+      <Head pageTitle="Home" />
       <Slider />
       {/* Category, Search & Filter Section */}
       <section className="m-4 md:mx-8 md:my-6">
