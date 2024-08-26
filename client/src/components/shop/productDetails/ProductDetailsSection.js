@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { ProductDetailsContext } from "./index";
 import { LayoutContext } from "../layout";
 import Submenu from "./Submenu";
