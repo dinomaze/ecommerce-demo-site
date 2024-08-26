@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext } from "react";
 import Layout from "./Layout";
 import { handleChangePassword } from "./Action";
 import { DashboardUserContext } from "./Layout";
+import { Head } from "../../../head";
 
 const SettingComponent = () => {
   const { data, dispatch } = useContext(DashboardUserContext);
@@ -174,6 +175,7 @@ const SettingComponent = () => {
 const SettingUser = (props) => {
   return (
     <Fragment>
+      <Head pageTitle="Settings" />
       <Layout children={<SettingComponent />} />
     </Fragment>
   );
