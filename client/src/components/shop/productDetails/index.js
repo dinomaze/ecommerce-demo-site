@@ -4,17 +4,9 @@ import {
   productDetailsState,
   productDetailsReducer,
 } from "./ProductDetailsContext";
-import Details from "./Details";
+import ProductDetailsSection from "./ProductDetailsSection";
 
 export const ProductDetailsContext = createContext();
-
-const DetailsComponent = () => {
-  return (
-    <Fragment>
-      <Details />
-    </Fragment>
-  );
-};
 
 const ProductDetails = (props) => {
   const [data, dispatch] = useReducer(
@@ -24,7 +16,7 @@ const ProductDetails = (props) => {
   return (
     <Fragment>
       <ProductDetailsContext.Provider value={{ data, dispatch }}>
-        <Layout children={<DetailsComponent />} />
+        <Layout children={<ProductDetailsSection />} />
       </ProductDetailsContext.Provider>
     </Fragment>
   );
